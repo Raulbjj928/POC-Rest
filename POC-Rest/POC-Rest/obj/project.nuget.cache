@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "UIj/eIBFyTT/1stUFwEzv+5HJS2yuQXDaHVFj4bokjBldcZU5h/bcFzKhMV/Avc7iRiKa1/e2TOBI7OGMxkCGw==",
+  "success": true,
+  "projectFilePath": "C:\\Estudos\\Csharp\\POC-Rest\\POC-Rest\\POC-Rest\\POC-Rest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\raul.furtado\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
