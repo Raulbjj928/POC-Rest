@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using POC_Rest.Services;
+using POC_Rest.Services.Implementations;
 
 namespace POC_Rest
 {
@@ -23,11 +25,11 @@ namespace POC_Rest
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Dependency Injection
             services.AddControllers();
+            services.AddScoped<IProductService, ProductServiceImplamentation>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "POC_Rest", Version = "v1" });
