@@ -1,9 +1,6 @@
 ﻿using POC_Rest.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace POC_Rest.Services.Implementations
 {
@@ -18,6 +15,7 @@ namespace POC_Rest.Services.Implementations
 
         public Product Delete(long id)
         {
+            return new Product { };
         }
 
         public List<Product> FindAll()
@@ -54,8 +52,8 @@ namespace POC_Rest.Services.Implementations
             return new Product
             {
                 Id = IncrementANdGet(),
-                Name = "Nome do Produto" + i,
-                UnitOfMeasurement = "Unidade de medida" + i,
+                Name = "Nome do Produto " + i,
+                UnitOfMeasurement = "Unidade de medida " + i,
                 Liter = 1,
                 Weight = 0,
                 Price = 5
