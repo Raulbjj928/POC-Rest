@@ -32,7 +32,7 @@ namespace POC_Rest.Services.Implementations
         public Product FindById(long id)
         {
             return new Product
-            {
+            { 
                 Id = IncrementANdGet(),
                 Name = "Cerveja",
                 UnitOfMeasurement = "Litro",
