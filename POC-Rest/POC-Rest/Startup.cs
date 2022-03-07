@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using POC_Rest.Model.Context;
 using POC_Rest.Services;
 using POC_Rest.Services.Implementations;
 
@@ -22,6 +24,10 @@ namespace POC_Rest
         {
             //Dependency Injection
             services.AddControllers();
+
+            var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+
             services.AddScoped<IProductService, ProductServiceImplamentation>();
             services.AddSwaggerGen(c =>
             {
