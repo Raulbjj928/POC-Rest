@@ -1,68 +1,85 @@
 ﻿using POC_Rest.Model;
+using POC_Rest.Model.Context;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace POC_Rest.Services.Implementations
 {
     public class ProductServiceImplamentation : IProductService
     {
-        private volatile int count;
+        private MySQLContext _context;
+
+        public ProductServiceImplamentation(MySQLContext context)
+        {
+            _context = context;
+        }
 
         public Product Create(Product product)
         {
+            try
+            {
+                _context.Add(product);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return product;
         }
 
-        public Product Delete(long id)
+        public Product FindById(long id)
         {
-            return new Product { };
+            return _context.Products.SingleOrDefault(p => p.Id.Equals(id));
         }
 
         public List<Product> FindAll()
         {
-            List<Product> products = new List<Product>();
-            for (int i = 0; i < 8; i++)
-            {
-                Product product = MockProduct(i);
-                products.Add(product);
-            }
-            return products;
-        }
-                
-        public Product FindById(long id)
-        {
-            return new Product
-            { 
-                Id = IncrementANdGet(),
-                Name = "Cerveja",
-                UnitOfMeasurement = "Litro",
-                Liter = 1,
-                Weight = 0,
-                Price = 5
-            };
+            return _context.Products.ToList();
         }
 
         public Product Update(Product product)
         {
-            return product;
-        }
+            if (!Exists(product.Id)) return new Product();
 
-        private Product MockProduct(int i)
-        {
-            return new Product
+            var result = _context.Products.SingleOrDefault(b => b.Id == product.Id);
+
+            if (result != null)
             {
-                Id = IncrementANdGet(),
-                Name = "Nome do Produto " + i,
-                UnitOfMeasurement = "Unidade de medida " + i,
-                Liter = 1,
-                Weight = 0,
-                Price = 5
-            };
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(product);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return result;
         }
 
-        private long IncrementANdGet()
+        public void Delete(long id)
         {
-            return Interlocked.Increment(ref count);
+            var result = _context.Products.SingleOrDefault(p => p.Id.Equals(id));
+            try
+            {
+                if (result != null)
+                {
+                    _context.Products.Remove(result);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }    
+        private bool Exists(long? id)
+        {
+            return _context.Products.Any(p => p.Id.Equals(id));
         }
     }
 }

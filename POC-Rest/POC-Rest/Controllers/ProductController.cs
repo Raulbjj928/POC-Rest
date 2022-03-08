@@ -7,7 +7,7 @@ namespace POC_Rest.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductController : Controller
     {
         private readonly ILogger<ProductController> _logger;
         private IProductService _productService;

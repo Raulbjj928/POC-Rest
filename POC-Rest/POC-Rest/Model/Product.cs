@@ -6,7 +6,7 @@ namespace POC_Rest.Model
     public class Product
     {
         [Column("id")]
-        public long Id{ get; set; }
+        public long? Id{ get; set; }
 
         [Column("name")]
         public string Name { get; set; }

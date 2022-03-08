@@ -9,6 +9,6 @@ namespace POC_Rest.Services
         Product FindById(long id);
         List<Product> FindAll();
         Product Update(Product product);
-        Product Delete(long id);
+        void Delete(long id);
     }
 }
