@@ -1,8 +1,6 @@
-using POC_Rest.Model;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Xunit;
 
 namespace POC_RestTests
 {
